@@ -1,6 +1,8 @@
+#!/usr/bin/env node
+
 require('dotenv').config();
 const Discord = require('discord.js');
-const { prefix } = require('./config.json');
+const { prefix, foyer, office } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -25,12 +27,18 @@ client.on('message', message => {
                 let member = waiting.shift();
                 try {
                     message.channel.send(`Bringing ${member.displayName} into The Office.`);
-                    member.voice.setChannel("798350259721601094");
+                    member.voice.setChannel(office);
                 } catch (error) {
                     message.channel.send(`Something went wrong.`);
                     console.error(error);
                 }
             }
+            break;
+        case 'ping':
+            message.channel.send("Pong");
+            break;
+        case 'queue':
+            message.channel.send(`Queue: ${waiting.map(member => member.displayName)}`);
             break;
         default:
             message.channel.send("Unknown Command.");
@@ -56,10 +64,6 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
                 }
             }
         }
-        client.channels.fetch("798350259721601094").then(channel => {
-            console.log(`Members: ${channel.members.map(member => member.displayName)}`)
-            console.log(`Queue: ${waiting.map(member => member.displayName)}`);
-        });
     }
 });
 
