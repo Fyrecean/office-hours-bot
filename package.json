@@ -1,0 +1,19 @@
+{
+  "name": "office-hours-bot",
+  "version": "1.0.0",
+  "description": "Automated queuing system for Discord office hours.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fyrecean/office-hours-bot.git"
+  },
+  "author": "Carter Schmidt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fyrecean/office-hours-bot/issues"
+  },
+  "homepage": "https://github.com/Fyrecean/office-hours-bot#readme"
+}
